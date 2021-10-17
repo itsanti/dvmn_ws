@@ -21,9 +21,6 @@ created_at: {2}
 is_active: {3}'''
     print(person_info.format(person42.owner_name, person42.passcode, person42.created_at, person42.is_active))
 
-    active_passcards = []
-    for passcard in passcards:
-        if passcard.is_active:
-            active_passcards.append(passcard)
+    active_passcards = Passcard.objects.filter(is_active=True)
     print(f'Всего пропусков {len(passcards)}')
     print(f'Активных пропусков {len(active_passcards)}')
