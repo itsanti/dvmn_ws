@@ -21,11 +21,7 @@ class Visit(models.Model):
     leaved_at = models.DateTimeField(null=True)
 
     def get_duration(self):
-        if self.leaved_at is None:
-            end_time = localtime(None)
-        else:
-            end_time = localtime(self.leaved_at)
-        delta = end_time - localtime(self.entered_at)
+        delta = localtime(self.leaved_at) - localtime(self.entered_at)
         return int(delta.total_seconds())
 
     def is_long(self, minutes=60):
